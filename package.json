@@ -6,7 +6,9 @@
   "author": "",
   "description": "",
   "scripts": {
-    "start": "webpack -w & nodemon server --ignore public",
+    "start": "npm run start-server & npm run build-watch",
+    "build-watch": "webpack -w",
+    "start-server": "nodemon server --ignore public",
     "seed": "node seed.js"
   },
   "dependencies": {
