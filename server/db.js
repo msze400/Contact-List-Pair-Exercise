@@ -1,26 +1,28 @@
-const Sequelize = require('sequelize')
-const db = new Sequelize('postgres://localhost/first-contact', {logging: false})
+const Sequelize = require('sequelize');
+const db = new Sequelize('postgres://localhost/first-contact', {
+  logging: false,
+});
 
 const Contact = db.define('contacts', {
   name: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   phone: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
   },
   email: {
     type: Sequelize.STRING,
     validate: {
-      isEmail: true
-    }
+      isEmail: true,
+    },
   },
   imageUrl: {
-    type: Sequelize.STRING
-  }
-})
+    type: Sequelize.STRING,
+  },
+});
 
 module.exports = {
   db,
-  Contact
-}
+  Contact,
+};

@@ -56,11 +56,14 @@ table {
   border-collapse: collapse;
 }
 
-table, th, td {
+table,
+th,
+td {
   border: 1px solid #222222;
 }
 
-th, td {
+th,
+td {
   padding: 5px;
 }
 
@@ -73,4 +76,3 @@ img {
   width: 230px;
   border-radius: 5px;
 }
-
