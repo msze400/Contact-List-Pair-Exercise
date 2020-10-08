@@ -27,6 +27,7 @@
     "no-trailing-spaces": "warn",
     "no-console": "off",
     "no-multiple-empty-lines": "warn",
+    "react/jsx-key": "warn",
     "no-unused-vars": [
       "warn",
       {

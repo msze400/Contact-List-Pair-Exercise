@@ -36,9 +36,19 @@ app.get('/api/contacts/:contactId', async (req, res, next) => {
   }
 });
 
+app.put('/api/contacts/:contactId', async (req, res, next) => {
+  try {
+    const contact = await Contact.findByPk(req.params.contactId);
+    await contact.update(req.body);
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+});
+
 // For all GET requests that aren't to an API route,
 // we will send the index.html!
-app.get('/*', async (req, res, next) => {
+app.get('/*', (req, res, next) => {
   res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 

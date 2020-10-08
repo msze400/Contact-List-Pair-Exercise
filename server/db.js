@@ -17,6 +17,10 @@ const Contact = db.define('contacts', {
       isEmail: true,
     },
   },
+  favorite: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
   imageUrl: {
     type: Sequelize.STRING,
   },
