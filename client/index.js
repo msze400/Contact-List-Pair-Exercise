@@ -2,6 +2,7 @@ import Axios from 'axios';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import ContactList from './ContactList';
+import SingleContact from './SingleContact';
 
 // const contacts = [
 //   { id: 1, name: 'R2-D2', phone: '222-222-2222', email: 'r2d2@droids.com' },
@@ -15,8 +16,10 @@ class Main extends Component {
 
     this.state = {
       contacts: [],
-      // contacts: contacts,
+      selectedContact: {},
     };
+
+    this.selectContact = this.selectContact.bind(this);
   }
 
   async componentDidMount() {
@@ -29,6 +32,16 @@ class Main extends Component {
     }
   }
 
+  async selectContact(contactId) {
+    try {
+      const res = await Axios.get(`/api/contacts/${contactId}`);
+      const selectedContact = res.data;
+      this.setState({ selectedContact });
+    } catch (err) {
+      console.log('There was a problem making contact');
+    }
+  }
+
   render() {
     return (
       <div id="main">
@@ -36,7 +49,14 @@ class Main extends Component {
           <div>Contact List</div>
         </div>
         <div id="container">
-          <ContactList contacts={this.state.contacts} />
+          {this.state.selectedContact.id ? (
+            <SingleContact selectedContact={this.state.selectedContact} />
+          ) : (
+            <ContactList
+              contacts={this.state.contacts}
+              selectContact={this.selectContact}
+            />
+          )}
         </div>
       </div>
     );

@@ -4,7 +4,8 @@ function ContactRow(props) {
   const contact = props.contacts;
 
   return (
-    <tr>
+    //why is below statement not recognize id?
+    <tr onClick={() => props.selectContact(props.contacts.id)}>
       <td>{contact.name}</td>
       <td>{contact.phone}</td>
       <td>{contact.email}</td>
